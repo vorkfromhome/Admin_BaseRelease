@@ -1,0 +1,127 @@
+<div class="row">
+    <div class="col-lg-12">
+        <div class="col-lg-12 text-right" style="padding-bottom: 10px;">
+            <button class="btn btn-labeled btn-success" type="button" ng-click="openConfirm()"> <span class="btn-label"><i class="fa fa-plus"></i>
+               </span>Add</button>
+            <button class="btn btn-labeled btn-success" type="button" ng-click="openConfirm()"> <span class="btn-label"><i class="fa fa-plus"></i>
+               </span>Conversation</button>
+        </div>
+        <div class="col-lg-12" ng-controller="DataTableController as table2">
+            <!-- Zero Configuration-->
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <table class="row-border hover" datatable="ng" dt-options="table2.dtOptions" dt-column-defs="table2.dtColumnDefs">
+                        <thead>
+                            <tr>
+                                <th>Metric</th>
+                                <th>Symbol</th>
+                                <th>Base Unit</th>
+                                <th>Multiples</th>
+                                <th>Modified On</th>
+                                <th>Modified By</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="x in metrics.productdata">
+                                <td>{{x.name}}</td>
+                                <td>{{x.symbol}}</td>
+                                <td>{{x.baseunit}}</td>
+                                <td>{{x.multiple}}</td>
+                                <td>{{x.modifiedon}}</td>
+                                <td>{{x.modifiedby}}</td>
+                                <td>{{x.activestatus == "1" ? "Active" : x.activestatus == "0" ? "Inactive" : "Deleted"}}</td>
+                                <td>
+                                    <button class="btn btn-sm btn-warning" type="button" ng-click="metrics.editmetrics(x._id)"> <em class="fa fa-edit"></em> </button>
+                                    <button class="btn btn-sm btn-danger" type="button" ng-click="metrics.deleterow(x._id)"> <em class="fa fa-trash-o"></em> </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end Main panels-->
+
+
+<!-- Templates -->
+   <script type="text/ng-template" id="modalDialogId">
+      <div class="ngdialog-message">
+      <!-- START panel-->
+    <div class="panel panel-dark panel-flat" ng-controller="metricsController as form">
+        <div class="panel-heading text-center">
+            <h3>{{form.producttitle}}</h3>
+        </div>
+        <div class="panel-body">
+            <div class="col-lg-12">
+                <div>
+                    <form class="form-validate form-horizontal" name="form.formValidate" ng-submit="form.submitForm()" novalidate=" ">
+                        <div class="col-xs-12">
+                            <!-- Product information -->
+                            <div class="form-group" ng-class="{ 'has-error' : form.validateInput('name', 'required')}">
+                                <label>Metric</label>
+                                <input type="text" name="name" class="form-control inputborder" placeholder="Enter Your name" ng-model="setdatatoo.name" ng-pattern="/[A-Za-z]$/" required />
+                                <p ng-show="form.validateInput('name', 'required')" class="text-danger">This field is required.</p>
+                                <p ng-show="form.validateInput('name', 'pattern')" class="text-danger">This field must contain only charector</p>
+                            </div>
+                        </div>
+                        <div class="col-xs-12">
+                            <!-- Product information -->
+                            <div class="form-group" ng-class="{ 'has-error' : form.validateInput('symbol', 'required')}">
+                                <label>Symbol</label>
+                                <input type="text" name="symbol" class="form-control inputborder" placeholder="Enter Your name" ng-model="setdatatoo.symbol" ng-pattern="/[A-Za-z]$/" required />
+                                <p ng-show="form.validateInput('symbol', 'required')" class="text-danger">This field is required.</p>
+                                <p ng-show="form.validateInput('symbol', 'pattern')" class="text-danger">This field must contain only charector</p>
+                            </div>
+                        </div>
+                        <div class="col-xs-12">
+                            <div class="form-group" ng-class="{ 'has-error' : form.validateInput('baseunit', 'required')}">
+                                <label>Base</label>
+                                <select class="form-control inputborder" name="baseunit" ng-model="setdatatoo.baseunit" required>
+                                    <option value="">category</option>
+                                    <option value="1">category 1</option>
+                                    <option value="2">category 2</option>
+                                </select>
+                                <p ng-show="form.validateInput('baseunit', 'required')" class="text-danger">This field is required.</p>
+                            </div>
+                        </div>
+                        <div class="col-xs-12">
+                            <!-- Product information -->
+                            <div class="form-group" ng-class="{ 'has-error' : form.validateInput('multiple', 'required')}">
+                                <label>Multiple</label>
+                                <input type="text" name="multiple" class="form-control inputborder" placeholder="Enter Your value" ng-model="setdatatoo.multiple" ng-pattern="/[0-9]$/" required />
+                                <p ng-show="form.validateInput('multiple', 'required')" class="text-danger">This field is required.</p>
+                                <p ng-show="form.validateInput('multiple', 'pattern')" class="text-danger">This field must contain only number</p>
+                            </div>
+                        </div>
+                          <!-- Status -->   
+    <div class="col-xs-12">
+          <div class="form-group"  ng-class="{ 'has-error' : form.validateInput('activestatus', 'required')}">
+            <label>Status</label>
+            <select class="form-control inputborder" name="activestatus" ng-model="setdatatoo.activestatus" required >
+                <option value="">Select status</option>
+              <option value="1">Active</option>
+              <option value="0">InActive</option>
+              <option value="-1">Deleted</option>
+            </select>
+      <p ng-show="form.validateInput('activestatus', 'required')" class="text-danger">This field is required.</p>
+          </div>
+    </div>
+                        <div class="col-xs-6 text-right">
+                            <button class="btn btn-success" type="submit"><strong>Save</strong></button>
+                        </div>
+                        <div class="col-xs-6 text-right">
+                            <button class="btn btn-danger" ng-click="closeThisDialog('button')"><strong>Cancel</strong></button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- END panel
+      <button class="btn btn-primary mr" type="button" ng-click="confirm(confirmValue)">Confirm</button>
+      <button class="btn btn-default" type="button" ng-click="closeThisDialog('button')">Cancel</button>-->
+      </div>
+   </script>

@@ -1,0 +1,252 @@
+<div class="row">
+    <div class="col-lg-12" style="padding-bottom: 10px;">
+        <div class="col-md-3 text-left">
+            <div class="input-group">
+                <select class="form-control" name="attributegrandparent" ng-model="attribute.attributegrandparent" required>
+                    <option value="0">No Grandparent</option>
+                    <option ng-repeat="x in attribute.mainroletypes" value="{{x.attributeroleid}}">{{x.attributerole}}</option>
+                </select> <span class="input-group-btn">
+    <button class="btn btn-info" type="button" ng-click="attribute.viewattribute()">View</button>
+  </span> </div>
+        </div>
+        <div class="col-md-6 text-right">
+            <button class="btn btn-labeled btn-success" type="button" ng-click="attribute.addattribute()"> <span class="btn-label"><i class="fa fa-plus"></i>
+               </span>Add</button>
+            <button class="btn btn-labeled btn-success" type="button" ng-click="attribute.bulkadd()"> <span class="btn-label"><i class="fa fa-plus"></i>
+               </span>Bulk Add</button>
+            <button class="btn btn-labeled btn-success" type="button" ng-click="attribute.bulkupdate()"> <span class="btn-label"><i class="fa fa-plus"></i>
+               </span>Bulk Update</button>
+        </div>
+    </div>
+    <div class="col-lg-12" ng-controller="DataTableController as table2">
+        <!-- Zero Configuration-->
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <table class="row-border hover" datatable="ng" dt-options="table2.dtOptions" dt-column-defs="table2.dtColumnDefs">
+                    <thead>
+                        <tr>
+                            <th>Attribute Role</th>
+                            <th>Attribute Parent</th>
+                            <th>Modify On</th>
+                            <th>Modify By</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="x in attribute.productdata">
+                            <td>{{x.attributerole}}</td>
+                            <td>{{attribute.rolesname[x.attributeparent]}} {{x.attributeparent == "0" ? "" : "-"}} {{attribute.rolesname[x.attributegrandparent]}}</td>
+                            <td>{{x.modifiedon}}</td>
+                            <td>{{x.modifiedby}}</td>
+                            <td>{{x.activestatus == "1" ? "Active" : x.activestatus == "0" ? "Inactive" : "Deleted"}}</td>
+                            <td>
+                                <button class="btn btn-sm btn-warning" type="button" ng-click="attribute.editattribute(x._id)"> <em class="fa fa-edit"></em> </button>
+                                <button class="btn btn-sm btn-danger" type="button" ng-click="attribute.deleterow(x._id)"> <em class="fa fa-trash-o"></em> </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end Main panels-->
+
+
+
+
+
+<!-- Templates -->
+   <script type="text/ng-template" id="bulkcreatemodalDialogId">
+      <div class="ngdialog-message">
+      <!-- START panel-->
+<div>
+   <div ng-controller="attributeController">
+      <div class="row">
+         <div class="col-md-12">
+         <h3>Form Upload</h3>
+            <div class="panel">
+               <div class="panel-body">
+                  <h4 class="page-header mt0">Select Files</h4>
+                  <input class="form-control" type="file" name="sampleFile" file-model="myFile" />
+                   <button ng-click="uploadcreateFile()" class="btn btn-success" style="margin-top:15px;">Upload Me</button>
+               </div>
+            </div>
+         </div>
+         <div class="col-md-12" style="margin-bottom: 40px">
+            <div class="panel">
+               <div class="panel-body">
+                   <h4 class="page-header mt0">Upload Queue</h4>
+                  <div>
+                     <table class="table">
+                        <thead>
+                           <tr>
+                              
+                           </tr>
+                        </thead>
+                        <tbody>
+                           <!--<tr ng-repeat="item in form.uploader.queue">
+                              
+                           </tr>-->
+                        </tbody>
+                     </table>
+                  </div>
+               </div>
+            </div>  
+         </div>
+      </div>
+   </div>
+</div>
+
+
+
+
+
+        <!-- END panel
+
+      <button class="btn btn-primary mr" type="button" ng-click="confirm(confirmValue)">Confirm</button>
+      <button class="btn btn-default" type="button" ng-click="closeThisDialog('button')">Cancel</button>-->
+      </div>
+      </div>
+   </script>
+
+
+<!-- Templates -->
+   <script type="text/ng-template" id="bulkupdatemodalDialogId">
+      <div class="ngdialog-message">
+      <!-- START panel-->
+<div>
+   <div ng-controller="attributeController">
+      <div class="row">
+         <div class="col-md-12">
+         <h3>Form Upload</h3>
+            <div class="panel">
+               <div class="panel-body">
+                  <h4 class="page-header mt0">Select Files</h4>
+                  <input class="form-control" type="file" name="sampleFile" file-model="myFile" />
+                   <button ng-click="uploadupdateFile()" class="btn btn-success" style="margin-top:15px;">Upload Me</button>
+               </div>
+            </div>
+         </div>
+         <div class="col-md-12" style="margin-bottom: 40px">
+            <div class="panel">
+               <div class="panel-body">
+                   <h4 class="page-header mt0">Upload Queue</h4>
+                  <div>
+                     <table class="table">
+                        <thead>
+                           <tr>
+                              
+                           </tr>
+                        </thead>
+                        <tbody>
+                           <!--<tr ng-repeat="item in form.uploader.queue">
+                              
+                           </tr>-->
+                        </tbody>
+                     </table>
+                  </div>
+               </div>
+            </div>  
+         </div>
+      </div>
+   </div>
+</div>
+
+
+
+
+
+        <!-- END panel
+
+      <button class="btn btn-primary mr" type="button" ng-click="confirm(confirmValue)">Confirm</button>
+      <button class="btn btn-default" type="button" ng-click="closeThisDialog('button')">Cancel</button>-->
+      </div>
+      </div>
+   </script>
+
+
+
+<!-- Templates -->
+   <script type="text/ng-template" id="modalDialogId">
+      <div class="ngdialog-message">
+    <!-- START panel-->
+<div class="panel panel-dark panel-flat" ng-controller="attributeController as form">
+  <div class="panel-heading text-center"> 
+  <h3>{{form.producttitle}}</h3>
+  </div>
+  <div class="panel-body">
+    <div class="col-lg-12">
+      <div >
+       <form class="form-validate form-horizontal" name="form.formValidate" ng-submit="form.submitForm()" novalidate=" ">
+       
+          <div class="col-xs-12">
+          <div class="form-group"  ng-class="{ 'has-error' : form.validateInput('attributegrandparent', 'required')}">
+            <label>Attribute Grandparent</label>
+            <select class="form-control inputborder" name="attributegrandparent" ng-model="setdatatoo.attributegrandparent" required >
+              <option ng-disabled="form.attrgrd" value="0">No Grandparent</option>
+              <option ng-disabled="form.attrgrd" ng-repeat="x in form.mainroletypes" value="{{x.attributeroleid}}">{{x.attributerole}}</option>
+            </select>
+      <p ng-show="form.validateInput('attributegrandparent', 'required')" class="text-danger">This field is required.</p>
+          </div>
+      </div>
+           
+          <div class="col-xs-12">
+          <div class="form-group"  ng-class="{ 'has-error' : form.validateInput('attributeparent', 'required')}">
+            <label>Attribute Parent</label>
+            <select class="form-control inputborder" name="attributeparent" ng-model="setdatatoo.attributeparent" required >
+              <option ng-disabled="form.attrprt" value="0">No Parent</option>
+              <option ng-disabled="form.attrprt" ng-repeat="x in form.subroletypes" value="{{x.attributeroleid}}">{{x.attributerole}}</option>
+            </select>
+      <p ng-show="form.validateInput('attributeparent', 'required')" class="text-danger">This field is required.</p>
+          </div>
+      </div>
+           
+            <div class="col-xs-12"> 
+              <!-- Product information -->
+              <div class="form-group" ng-class="{ 'has-error' : form.validateInput('attributerole', 'required')}">
+                <label>Attribute Role</label>
+                <input type="text" name="attributerole" class="form-control inputborder" placeholder="Enter Your attributerole" ng-model="setdatatoo.attributerole" ng-pattern="/[A-Za-z]$/" required />
+                <p ng-show="form.validateInput('attributerole', 'required')" class="text-danger">This field is required.</p>
+        <p ng-show="form.validateInput('attributerole', 'pattern')" class="text-danger">This field must contain only charectors</p>
+              </div>
+            </div>
+           
+       
+           
+         <!-- Status -->  
+    <div class="col-xs-12">
+          <div class="form-group"  ng-class="{ 'has-error' : form.validateInput('activestatus', 'required')}">
+            <label>Status</label>
+            <select class="form-control inputborder" name="activestatus" ng-model="setdatatoo.activestatus" required >
+                <option value="">Select Status</option>
+              <option value="1">Active</option>
+              <option value="0">In Active</option>
+              <option value="-1">Deleted</option>
+            </select>
+      <p ng-show="form.validateInput('activestatus', 'required')" class="text-danger">This field is required.</p>
+          </div>
+      </div>
+    
+
+<div class="col-xs-6 text-center">
+    <button class="btn btn-success" type="submit"><strong>Save</strong></button>
+    </div>
+<div class="col-xs-6 text-center">
+         <button class="btn btn-danger" ng-click="closeThisDialog('button')"><strong>Cancel</strong></button>
+      </div>
+      </form>
+    </div>
+    </div>
+  </div>
+  <!-- END panel
+
+      <button class="btn btn-primary mr" type="button" ng-click="confirm(confirmValue)">Confirm</button>
+      <button class="btn btn-default" type="button" ng-click="closeThisDialog('button')">Cancel</button>-->
+      </div>
+      </div>
+   </script>
+
+
+

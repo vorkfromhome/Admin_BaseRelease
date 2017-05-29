@@ -1,0 +1,49 @@
+<div class="block-center mt-xl wd-xl" ng-controller="LoginController as form">
+   <!-- START panel-->
+   <div class="panel panel-dark panel-flat">
+      <div class="panel-heading text-center">
+         <a href="#">
+            <img class="block-center img-rounded" src="app/img/logo.png" alt="Image" />
+         </a>
+      </div>
+      <div class="panel-body">
+          <div class="col-lg-12">
+         <p class="text-center pv">SIGN IN TO CONTINUE.</p>
+           <form class="form-validate form-horizontal mb-lg" name="form.formValidate" ng-submit="form.submitForm()" novalidate=" ">
+               <div class="form-group has-feedback" >
+               <input type="email" name="email" class="form-control" placeholder="Enter Your email" ng-model="form.email" ng-pattern='/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/' required="" />
+               <span class="fa fa-envelope form-control-feedback text-muted"></span>
+               <span class="text-danger" ng-show="form.validateInput('email', 'required')" class="help-block">This field is required</span>
+               <span class="text-danger" ng-show="form.validateInput('email', 'pattern')" class="help-block">This field must be a valid email address</span>
+            </div>
+            <div class="form-group has-feedback">
+                <input type="password" name="password" class="form-control" placeholder="Enter Your password" ng-model="form.password" required="" />
+               <span class="fa fa-lock form-control-feedback text-muted"></span>
+               <span class="text-danger" ng-show="form.validateInput('password', 'required')">This field is required</span>
+            </div>
+            <div class="clearfix">
+               <div class="checkbox c-checkbox pull-left mt0">
+                  <label>
+                     <input type="checkbox" value="" name="account_remember" ng-model="form.account.remember" />
+                     <span class="fa fa-check"></span>Remember Me</label>
+               </div>
+               <div class="pull-right"><a class="text-muted" ui-sref="page.recover">Forgot your password?</a>
+               </div>
+            </div>
+            <button class="btn btn-block btn-primary mt-lg" type="submit">Login</button>
+         </form>
+         <div class="alert alert-danger text-center" ng-show="form.authMsg">{{form.authMsg}}</div>
+         <p class="pt-lg text-center">Need to Signup?</p><a class="btn btn-block btn-default" ui-sref="page.register">Register Now</a>
+      </div>
+       </div>
+   </div>
+   <!-- END panel-->
+   <div class="p-lg text-center">
+      <span>&copy;</span>
+      <span ng-bind="app.year"></span>
+      <span>-</span>
+      <span ng-bind="app.name"></span>
+      <br/>
+      <span ng-bind="app.description"></span>
+   </div>
+</div>

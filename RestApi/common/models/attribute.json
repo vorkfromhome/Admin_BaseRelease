@@ -1,0 +1,27 @@
+{
+  "name": "attribute",
+  "plural": "attributes",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "role": {
+      "type": "string",
+      "required": true
+    },
+    "parentrole": {
+      "type": "string",
+      "required": true
+    },
+    "childrole": {
+      "type": "string",
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

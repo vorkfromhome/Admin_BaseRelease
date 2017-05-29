@@ -1,0 +1,908 @@
+{
+  "db": {
+    "name": "db",
+    "connector": "memory"
+  },
+  "materialmanagement": {
+    "name": "materialmanagement",
+    "connector": "rest",
+    "debug": "false",
+    "operations": [
+      {
+        "template": {
+          "method": "GET",
+          "url": "http://localhost:8000/material/listmaterial",
+          "headers": {
+            "accepts": "application/json",
+            "content-type": "application/json"
+          },
+          "query": {
+            "status": "{status}",
+            "sensor": "{sensor=false}"
+          },
+          "responsePath": "$.result"
+        },
+        "functions": {
+          "listmaterial": [
+            "status"
+          ]
+        }
+      },
+      {
+        "template": {
+          "method": "GET",
+          "url": "http://localhost:8000/material/listmaterialone",
+          "headers": {
+            "accepts": "application/json",
+            "content-type": "application/json"
+          },
+          "query": {
+            "id": "{id}",
+            "sensor": "{sensor=false}"
+          },
+          "responsePath": "$.result"
+        },
+        "functions": {
+          "listmaterialone": [
+            "id"
+          ]
+        }
+      },
+      {
+        "template": {
+          "method": "GET",
+          "url": "http://localhost:8000/material/deletematerial",
+          "headers": {
+            "accepts": "application/json",
+            "content-type": "application/json"
+          },
+          "query": {
+            "id": "{id}",
+            "status": "{status}",
+            "modifiedby": "{modifiedby}",
+            "sensor": "{sensor=false}"
+          },
+          "responsePath": "$.result"
+        },
+        "functions": {
+          "deletematerial": [
+            "status",
+            "id",
+            "modifiedby"
+          ]
+        }
+      },
+      {
+        "template": {
+          "method": "GET",
+          "url": "http://localhost:8000/material/bulkcreatematerial",
+          "headers": {
+            "accepts": "application/json",
+            "content-type": "application/json"
+          },
+          "query": {
+            "bulkdata": "{bulkdata}",
+            "totlen": "{totlen}",
+            "sensor": "{sensor=false}"
+          },
+          "responsePath": "$.result"
+        },
+        "functions": {
+          "bulkcreatematerial": [
+            "bulkdata",
+            "totlen"
+          ]
+        }
+      },
+      {
+        "template": {
+          "method": "GET",
+          "url": "http://localhost:8000/material/bulkupdatematerial",
+          "headers": {
+            "accepts": "application/json",
+            "content-type": "application/json"
+          },
+          "query": {
+            "bulkdata": "{bulkdata}",
+            "totlen": "{totlen}",
+            "sensor": "{sensor=false}"
+          },
+          "responsePath": "$.result"
+        },
+        "functions": {
+          "bulkupdatematerial": [
+            "bulkdata",
+            "totlen"
+          ]
+        }
+      },
+      {
+        "template": {
+          "method": "GET",
+          "url": "http://localhost:8000/material/creatematerial",
+          "headers": {
+            "accepts": "application/json",
+            "content-type": "application/json"
+          },
+          "query": {
+            "materialname": "{materialname}",
+            "category": "{category}",
+            "defaultmetric": "{defaultmetric}",
+            "modifiedby": "{modifiedby}",
+            "activestatus": "{activestatus}",
+            "status": "{status}",
+            "sensor": "{sensor=false}"
+          },
+          "responsePath": "$.result"
+        },
+        "functions": {
+          "creatematerial": [
+            "materialname",
+            "category",
+            "defaultmetric",
+            "modifiedby",
+            "activestatus",
+            "status"
+          ]
+        }
+      },
+      {
+        "template": {
+          "method": "GET",
+          "url": "http://localhost:8000/material/updatematerial",
+          "headers": {
+            "accepts": "application/json",
+            "content-type": "application/json"
+          },
+          "query": {
+            "materialname": "{materialname}",
+            "category": "{category}",
+            "defaultmetric": "{defaultmetric}",
+            "modifiedby": "{modifiedby}",
+            "activestatus": "{activestatus}",
+            "id": "{id}",
+            "sensor": "{sensor=false}"
+          },
+          "responsePath": "$.result"
+        },
+        "functions": {
+          "updatematerial": [
+            "materialname",
+            "category",
+            "defaultmetric",
+            "modifiedby",
+            "activestatus",
+            "id"
+          ]
+        }
+      }
+    ]
+  },
+  "metricmanagement": {
+    "name": "metricmanagement",
+    "connector": "rest",
+    "debug": "false",
+    "operations": [
+      {
+        "template": {
+          "method": "GET",
+          "url": "http://localhost:8000/metric/listmetric",
+          "headers": {
+            "accepts": "application/json",
+            "content-type": "application/json"
+          },
+          "query": {
+            "status": "{status}",
+            "sensor": "{sensor=false}"
+          },
+          "responsePath": "$.result"
+        },
+        "functions": {
+          "listmetric": [
+            "status"
+          ]
+        }
+      },
+      {
+        "template": {
+          "method": "GET",
+          "url": "http://localhost:8000/metric/listmetricone",
+          "headers": {
+            "accepts": "application/json",
+            "content-type": "application/json"
+          },
+          "query": {
+            "id": "{id}",
+            "sensor": "{sensor=false}"
+          },
+          "responsePath": "$.result"
+        },
+        "functions": {
+          "listmetricone": [
+            "id"
+          ]
+        }
+      },
+      {
+        "template": {
+          "method": "GET",
+          "url": "http://localhost:8000/metric/deletemetric",
+          "headers": {
+            "accepts": "application/json",
+            "content-type": "application/json"
+          },
+          "query": {
+            "id": "{id}",
+            "status": "{status}",
+            "modifiedby": "{modifiedby}",
+            "sensor": "{sensor=false}"
+          },
+          "responsePath": "$.result"
+        },
+        "functions": {
+          "deletemetric": [
+            "status",
+            "id",
+            "modifiedby"
+          ]
+        }
+      },
+      {
+        "template": {
+          "method": "GET",
+          "url": "http://localhost:8000/metric/createmetric",
+          "headers": {
+            "accepts": "application/json",
+            "content-type": "application/json"
+          },
+          "query": {
+            "name": "{name}",
+            "symbol": "{symbol}",
+            "baseunit": "{baseunit}",
+            "multiple": "{multiple}",
+            "modifiedby": "{modifiedby}",
+            "activestatus": "{activestatus}",
+            "status": "{status}",
+            "sensor": "{sensor=false}"
+          },
+          "responsePath": "$.result"
+        },
+        "functions": {
+          "createmetric": [
+            "name",
+            "symbol",
+            "baseunit",
+            "multiple",
+            "modifiedby",
+            "activestatus",
+            "status"
+          ]
+        }
+      },
+      {
+        "template": {
+          "method": "GET",
+          "url": "http://localhost:8000/metric/updatemetric",
+          "headers": {
+            "accepts": "application/json",
+            "content-type": "application/json"
+          },
+          "query": {
+            "name": "{name}",
+            "symbol": "{symbol}",
+            "baseunit": "{baseunit}",
+            "multiple": "{multiple}",
+            "modifiedby": "{modifiedby}",
+            "activestatus": "{activestatus}",
+            "id": "{id}",
+            "sensor": "{sensor=false}"
+          },
+          "responsePath": "$.result"
+        },
+        "functions": {
+          "updatemetric": [
+            "name",
+            "symbol",
+            "baseunit",
+            "multiple",
+            "modifiedby",
+            "activestatus",
+            "id"
+          ]
+        }
+      }
+    ]
+  },
+  "usermanagement": {
+    "name": "usermanagement",
+    "connector": "rest",
+    "debug": "false",
+    "operations": [
+      {
+        "template": {
+          "method": "GET",
+          "url": "http://localhost:8000/user/listuser",
+          "headers": {
+            "accepts": "application/json",
+            "content-type": "application/json"
+          },
+          "query": {
+            "status": "{status}",
+            "sensor": "{sensor=false}"
+          },
+          "responsePath": "$.result"
+        },
+        "functions": {
+          "listuser": [
+            "status"
+          ]
+        }
+      },      {
+        "template": {
+          "method": "POST",
+          "url": "http://localhost:8000/user/loginuser",
+          "headers": {
+            "accepts": "application/json",
+            "content-type": "application/json"
+          },
+          "query": {
+            "email": "{email}",
+            "password": "{password}",
+            "sensor": "{sensor=false}"
+          },
+          "responsePath": "$.result"
+        },
+        "functions": {
+          "loginuser": [
+            "email",
+              "password"
+          ]
+        }
+      },
+      {
+        "template": {
+          "method": "GET",
+          "url": "http://localhost:8000/user/listuserone",
+          "headers": {
+            "accepts": "application/json",
+            "content-type": "application/json"
+          },
+          "query": {
+            "id": "{id}",
+            "sensor": "{sensor=false}"
+          },
+          "responsePath": "$.result"
+        },
+        "functions": {
+          "listuserone": [
+            "id"
+          ]
+        }
+      },
+      {
+        "template": {
+          "method": "GET",
+          "url": "http://localhost:8000/user/deleteuser",
+          "headers": {
+            "accepts": "application/json",
+            "content-type": "application/json"
+          },
+          "query": {
+            "id": "{id}",
+            "status": "{status}",
+            "modifiedby": "{modifiedby}",
+            "sensor": "{sensor=false}"
+          },
+          "responsePath": "$.result"
+        },
+        "functions": {
+          "deleteuser": [
+            "status",
+            "id",
+            "modifiedby"
+          ]
+        }
+      },      
+        {
+        "template": {
+          "method": "GET",
+          "url": "http://localhost:8000/user/resetuser",
+          "headers": {
+            "accepts": "application/json",
+            "content-type": "application/json"
+          },
+          "query": {
+            "id": "{id}",
+            "modifiedby": "{modifiedby}",
+            "sensor": "{sensor=false}"
+          },
+          "responsePath": "$.result"
+        },
+        "functions": {
+          "resetuser": [
+            "id",
+            "modifiedby"
+          ]
+        }
+      },
+      {
+        "template": {
+          "method": "GET",
+          "url": "http://localhost:8000/user/createuser",
+          "headers": {
+            "accepts": "application/json",
+            "content-type": "application/json"
+          },
+          "query": {
+            "firstname": "{firstname}",
+            "lastname": "{lastname}",
+            "mobile": "{mobile}",
+            "email": "{email}",
+            "password": "{password}",
+            "modifiedon": "{modifiedon}",
+            "modifiedby": "{modifiedby}",
+            "pin": "{pin}",
+            "activestatus": "{activestatus}",
+            "status": "{status}",
+            "sensor": "{sensor=false}"
+          },
+          "responsePath": "$.result"
+        },
+        "functions": {
+          "createuser": [
+            "firstname",
+            "lastname",
+            "mobile",
+            "email",
+            "password",
+            "modifiedon",
+            "modifiedby",
+            "pin",
+            "activestatus",
+            "status"
+          ]
+        }
+      },
+      {
+        "template": {
+          "method": "GET",
+          "url": "http://localhost:8000/user/updateuser",
+          "headers": {
+            "accepts": "application/json",
+            "content-type": "application/json"
+          },
+          "query": {
+            "firstname": "{firstname}",
+            "lastname": "{lastname}",
+            "mobile": "{mobile}",
+            "email": "{email}",
+            "pin": "{pin}",
+            "password": "{password}",
+            "modifiedby": "{modifiedby}",
+            "activestatus": "{activestatus}",
+            "id": "{id}",
+            "sensor": "{sensor=false}"
+          },
+          "responsePath": "$.result"
+        },
+        "functions": {
+          "updateuser": [
+            "firstname",
+            "lastname",
+            "mobile",
+            "email",
+            "password",
+            "pin",
+            "modifiedby",
+            "activestatus",
+            "id"
+          ]
+        }
+      }
+    ]
+  },
+  "clientmanagement": {
+    "name": "clientmanagement",
+    "connector": "rest",
+    "debug": "false",
+    "operations": [
+      {
+        "template": {
+          "method": "GET",
+          "url": "http://localhost:8000/client/listclient",
+          "headers": {
+            "accepts": "application/json",
+            "content-type": "application/json"
+          },
+          "query": {
+            "status": "{status}",
+            "sensor": "{sensor=false}"
+          },
+          "responsePath": "$.result"
+        },
+        "functions": {
+          "listclient": [
+            "status"
+          ]
+        }
+      },
+      {
+        "template": {
+          "method": "GET",
+          "url": "http://localhost:8000/client/listclientone",
+          "headers": {
+            "accepts": "application/json",
+            "content-type": "application/json"
+          },
+          "query": {
+            "id": "{id}",
+            "sensor": "{sensor=false}"
+          },
+          "responsePath": "$.result"
+        },
+        "functions": {
+          "listclientone": [
+            "id"
+          ]
+        }
+      },
+      {
+        "template": {
+          "method": "GET",
+          "url": "http://localhost:8000/client/deleteclient",
+          "headers": {
+            "accepts": "application/json",
+            "content-type": "application/json"
+          },
+          "query": {
+            "id": "{id}",
+            "status": "{status}",
+            "modifiedby": "{modifiedby}",
+            "sensor": "{sensor=false}"
+          },
+          "responsePath": "$.result"
+        },
+        "functions": {
+          "deleteclient": [
+            "status",
+            "id",
+            "modifiedby"
+          ]
+        }
+      },
+        {
+        "template": {
+          "method": "GET",
+          "url": "http://localhost:8000/client/resetclient",
+          "headers": {
+            "accepts": "application/json",
+            "content-type": "application/json"
+          },
+          "query": {
+            "id": "{id}",
+            "modifiedby": "{modifiedby}",
+            "sensor": "{sensor=false}"
+          },
+          "responsePath": "$.result"
+        },
+        "functions": {
+          "resetclient": [
+            "id",
+            "modifiedby"
+          ]
+        }
+      },
+      {
+        "template": {
+          "method": "GET",
+          "url": "http://localhost:8000/client/createclient",
+          "headers": {
+            "accepts": "application/json",
+            "content-type": "application/json"
+          },
+          "query": {
+            "firstname": "{firstname}",
+            "lastname": "{lastname}",
+            "mobile": "{mobile}",
+            "email": "{email}",
+            "password": "{password}",
+            "modifiedon": "{modifiedon}",
+            "modifiedby": "{modifiedby}",
+            "pin": "{pin}",
+            "activestatus": "{activestatus}",
+            "status": "{status}",
+            "sensor": "{sensor=false}"
+          },
+          "responsePath": "$.result"
+        },
+        "functions": {
+          "createclient": [
+            "firstname",
+            "lastname",
+            "mobile",
+            "email",
+            "password",
+            "modifiedon",
+            "modifiedby",
+            "pin",
+            "activestatus",
+            "status"
+          ]
+        }
+      },
+      {
+        "template": {
+          "method": "GET",
+          "url": "http://localhost:8000/client/updateclient",
+          "headers": {
+            "accepts": "application/json",
+            "content-type": "application/json"
+          },
+          "query": {
+            "firstname": "{firstname}",
+            "lastname": "{lastname}",
+            "mobile": "{mobile}",
+            "email": "{email}",
+            "pin": "{pin}",
+            "password": "{password}",
+            "modifiedby": "{modifiedby}",
+            "activestatus": "{activestatus}",
+            "id": "{id}",
+            "sensor": "{sensor=false}"
+          },
+          "responsePath": "$.result"
+        },
+        "functions": {
+          "updateclient": [
+            "firstname",
+            "lastname",
+            "mobile",
+            "email",
+            "password",
+            "pin",
+            "modifiedby",
+            "activestatus",
+            "id"
+          ]
+        }
+      }
+    ]
+  },
+  "attributemanagement": {
+    "name": "attributemanagement",
+    "connector": "rest",
+    "debug": "false",
+    "operations": [
+      {
+        "template": {
+          "method": "GET",
+          "url": "http://localhost:8000/attribute/listattribute",
+          "headers": {
+            "accepts": "application/json",
+            "content-type": "application/json"
+          },
+          "query": {
+            "status": "{status}",
+            "attributegrandparent": "{attributegrandparent}",
+            "sensor": "{sensor=false}"
+          },
+          "responsePath": "$.result"
+        },
+        "functions": {
+          "listattribute": [
+            "status",
+            "attributegrandparent"
+          ]
+        }
+      },
+      {
+        "template": {
+          "method": "GET",
+          "url": "http://localhost:8000/attribute/listattributeroles",
+          "headers": {
+            "accepts": "application/json",
+            "content-type": "application/json"
+          },
+          "query": {
+            "status": "{status}",
+            "sensor": "{sensor=false}"
+          },
+          "responsePath": "$.result"
+        },
+        "functions": {
+          "listattributeroles": [
+            "status"
+          ]
+        }
+      },
+      {
+        "template": {
+          "method": "GET",
+          "url": "http://localhost:8000/attribute/listattributeone",
+          "headers": {
+            "accepts": "application/json",
+            "content-type": "application/json"
+          },
+          "query": {
+            "id": "{id}",
+            "sensor": "{sensor=false}"
+          },
+          "responsePath": "$.result"
+        },
+        "functions": {
+          "listattributeone": [
+            "id"
+          ]
+        }
+      },
+      {
+        "template": {
+          "method": "GET",
+          "url": "http://localhost:8000/attribute/mainrole",
+          "headers": {
+            "accepts": "application/json",
+            "content-type": "application/json"
+          },
+          "query": {
+            "status": "{status}",
+            "sensor": "{sensor=false}"
+          },
+          "responsePath": "$.result"
+        },
+        "functions": {
+          "mainrole": [
+            "status"
+          ]
+        }
+      },
+      {
+        "template": {
+          "method": "GET",
+          "url": "http://localhost:8000/attribute/subrole",
+          "headers": {
+            "accepts": "application/json",
+            "content-type": "application/json"
+          },
+          "query": {
+            "status": "{status}",
+            "sensor": "{sensor=false}"
+          },
+          "responsePath": "$.result"
+        },
+        "functions": {
+          "subrole": [
+            "status"
+          ]
+        }
+      },
+      {
+        "template": {
+          "method": "GET",
+          "url": "http://localhost:8000/attribute/deleteattribute",
+          "headers": {
+            "accepts": "application/json",
+            "content-type": "application/json"
+          },
+          "query": {
+            "id": "{id}",
+            "status": "{status}",
+            "modifiedby": "{modifiedby}",
+            "sensor": "{sensor=false}"
+          },
+          "responsePath": "$.result"
+        },
+        "functions": {
+          "deleteattribute": [
+            "status",
+            "id",
+            "modifiedby"
+          ]
+        }
+      },
+      {
+        "template": {
+          "method": "GET",
+          "url": "http://localhost:8000/attribute/bulkcreateattribute",
+          "headers": {
+            "accepts": "application/json",
+            "content-type": "application/json"
+          },
+          "query": {
+            "bulkdata": "{bulkdata}",
+            "totlen": "{totlen}",
+            "sensor": "{sensor=false}"
+          },
+          "responsePath": "$.result"
+        },
+        "functions": {
+          "bulkcreateattribute": [
+            "bulkdata",
+            "totlen"
+          ]
+        }
+      },
+      {
+        "template": {
+          "method": "GET",
+          "url": "http://localhost:8000/attribute/bulkupdateattribute",
+          "headers": {
+            "accepts": "application/json",
+            "content-type": "application/json"
+          },
+          "query": {
+            "bulkdata": "{bulkdata}",
+            "totlen": "{totlen}",
+            "sensor": "{sensor=false}"
+          },
+          "responsePath": "$.result"
+        },
+        "functions": {
+          "bulkupdateattribute": [
+            "bulkdata",
+            "totlen"
+          ]
+        }
+      },
+      {
+        "template": {
+          "method": "GET",
+          "url": "http://localhost:8000/attribute/createattribute",
+          "headers": {
+            "accepts": "application/json",
+            "content-type": "application/json"
+          },
+          "query": {
+            "attributegrandparent": "{attributegrandparent}",
+            "attributeparent": "{attributeparent}",
+            "attributerole": "{attributerole}",
+            "modifiedby": "{modifiedby}",
+            "activestatus": "{activestatus}",
+            "status": "{status}",
+            "sensor": "{sensor=false}"
+          },
+          "responsePath": "$.result"
+        },
+        "functions": {
+          "createattribute": [
+            "attributegrandparent",
+            "attributeparent",
+            "attributerole",
+            "modifiedby",
+            "activestatus",
+            "status"
+          ]
+        }
+      },
+      {
+        "template": {
+          "method": "GET",
+          "url": "http://localhost:8000/attribute/updateattribute",
+          "headers": {
+            "accepts": "application/json",
+            "content-type": "application/json"
+          },
+          "query": {
+            "attributegrandparent": "{attributegrandparent}",
+            "attributeparent": "{attributeparent}",
+            "attributerole": "{attributerole}",
+            "modifiedby": "{modifiedby}",
+            "activestatus": "{activestatus}",
+            "id": "{id}",
+            "sensor": "{sensor=false}"
+          },
+          "responsePath": "$.result"
+        },
+        "functions": {
+          "updateattribute": [
+            "attributegrandparent",
+            "attributeparent",
+            "attributerole",
+            "modifiedby",
+            "activestatus",
+            "id"
+          ]
+        }
+      }
+    ]
+  }
+}

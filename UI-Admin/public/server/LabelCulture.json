@@ -1,0 +1,53 @@
+[{ 
+    "_id" : "5831d1bb5d8dce4de12645b1", 
+    "Application" : "Supplier", 
+    "Page" : "Register", 
+    "Step" : "Register", 
+    "Status" : "Published", 
+    "URL" : "/register", 
+    "Modified" : "Kannan", 
+    "ModifiedOn" : "2016/11/19", 
+    "Version" : "1.0", 
+    "Culture" : "EN", 
+    "EN" : {
+        "Caption" : {
+            "PageTitle" : {
+                "Content" : "New Supplier Registration", 
+                "Type" : "PageTitle"
+            }
+        }, 
+        "Message" : [
+
+        ], 
+        "Icon" : [
+
+        ]
+    }
+},
+{ 
+    "_id" : "5831e0bf5d8dce4de12645b2", 
+    "Application" : "Supplier", 
+    "Page" : "Register", 
+    "Step" : "Register", 
+    "Status" : "Published", 
+    "URL" : "/register", 
+    "Modified" : "Kannan", 
+    "ModifiedOn" : "2016/11/19", 
+    "Version" : "1.0", 
+    "Culture" : "TA", 
+    "TA" : {
+        "Caption" : {
+            "PageTitle" : {
+                "Content" : "உற்பத்தியாளர் பதிவு", 
+                "Type" : "PageTitle"
+            }
+        }, 
+        "Message" : [
+
+        ], 
+        "Icon" : [
+
+        ]
+    }
+}
+]

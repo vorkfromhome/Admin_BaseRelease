@@ -1,0 +1,26 @@
+[
+  {
+    "text": "Main Navigation",
+    "heading": "true",
+    "translate": "sidebar.heading.HEADER"
+  },
+  {
+    "text": "Home",
+    "sref": "app.dashboard",
+    "icon": "icon-speedometer",
+    "alert": "3" ,
+    "label": "label label-info"
+  },
+  {
+    "text": "Management",
+    "sref": "#",
+    "icon": "icon-chemistry",
+    "submenu": [
+      {"text": "Attribute",       "sref": "app.attribute" },
+      {"text": "Materials", "sref": "app.material" },
+      {"text": "Metrics",      "sref": "app.metrics"},
+      {"text": "Users",      "sref": "app.user"},
+      {"text": "Clients",      "sref": "app.client"}
+    ]      
+  }
+]

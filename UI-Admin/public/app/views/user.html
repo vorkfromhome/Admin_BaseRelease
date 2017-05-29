@@ -1,0 +1,261 @@
+<div class="row">
+    <div class="col-lg-12">
+        <div class="col-lg-12 text-right" style="padding-bottom: 10px;">
+            <button class="btn btn-labeled btn-success" type="button" ng-click="openConfirm()"> <span class="btn-label"><i class="fa fa-plus"></i>
+               </span>Add</button>
+            <button class="btn btn-labeled btn-success" type="button" ng-click="openConfirm()"> <span class="btn-label"><i class="fa fa-plus"></i>
+               </span>Conversation</button>
+        </div>
+        <div class="col-lg-12" ng-controller="DataTableController as table2">
+            <!-- Zero Configuration-->
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <table class="row-border hover" datatable="ng" dt-options="table2.dtOptions" dt-column-defs="table2.dtColumnDefs">
+                        <thead>
+                            <tr>
+                                <th>User Id</th>
+                                <th>Name</th>
+                                <th>Mobile</th>
+                                <th>E-mail</th>
+                                <th>Modify On</th>
+                                <th>Modify By</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="x in user.productdata">
+                                <td>{{x.userid}}</td>
+                                <td>{{x.firstname}} {{x.lastname}}</td>
+                                <td>{{x.mobile}}</td>
+                                <td>{{x.email}}</td>
+                                <td>{{x.modifiedon}}</td>
+                                <td>{{x.modifiedby}}</td>
+                                <td>{{x.activestatus == "1" ? "Active" : x.activestatus == "2" ? "Reset" : x.activestatus == "3" ? "Email verified" : x.activestatus == "4" ? "Mobile verified" : x.activestatus == "0" ? "Inactive" : "Deleted"}}</td>                                
+                                <td>
+                                    <button class="btn btn-sm btn-warning" type="button" ng-click="user.edituser(x._id)"> <em class="fa fa-edit"></em> </button>
+                                    
+                                    <button class="btn btn-sm btn-info" type="button" ng-click="user.resetuser(x._id)"> <em class="fa fa-random"></em> </button>
+                                    
+                                    <button class="btn btn-sm btn-danger" type="button" ng-click="user.deleterow(x._id)"> <em class="fa fa-trash-o"></em> </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<!-- Templates -->
+    <script type="text/ng-template" id="modalDialogId" >
+        <div class="ngdialog-message">
+                        <div class="panel panel-dark panel-flat" ng-controller="userController as form">
+                        <div class="panel-heading text-center">
+                        <h3>{{form.producttitle}}</h3> </div>   
+                        <div class="panel-body">
+                      <div class="col-lg-12">
+                    <form class="form-validate form-horizontal" name="form.formValidate" ng-submit="form.submitForm()" novalidate=" ">
+                                                
+                     <!-- firstname -->
+                    <div class="col-xs-12">
+                            <div class="form-group" ng-class="{ 'has-error' : form.validateInput('firstname', 'required')}">
+                                <label>First Name</label>
+                                <input type="text" name="firstname" class="form-control inputborder" placeholder="Enter Your firstname" ng-model="setdatatoo.firstname" ng-pattern="/[A-Za-z]$/" required />
+                                <p ng-show="form.validateInput('firstname', 'required')" class="text-danger">This field is required.</p>
+                                <p ng-show="form.validateInput('firstname', 'pattern')" class="text-danger">This field must contain only charector</p>
+                            </div>
+                        </div>
+                        
+                            <!-- lastname -->
+                             <div class="col-xs-12">
+                            <div class="form-group" ng-class="{ 'has-error' : form.validateInput('lastname', 'required')}">
+                                <label>Last Name</label>
+                                <input type="text" name="lastname" class="form-control inputborder" placeholder="Enter Your lastname" ng-model="setdatatoo.lastname" ng-pattern="/[A-Za-z]$/" required />
+                                <p ng-show="form.validateInput('lastname', 'required')" class="text-danger">This field is required.</p>
+                                <p ng-show="form.validateInput('lastname', 'pattern')" class="text-danger">This field must contain only charector</p>
+                            </div>
+                        </div>
+                        
+                        
+                       <!-- mobile -->
+                         <div class="col-xs-12">
+                            <div class="form-group" ng-class="{ 'has-error' : form.validateInput('mobile', 'required')}">
+                                <label>Mobile</label>
+                                <input type="text" name="mobile" class="form-control inputborder" placeholder="Enter Your mobile" ng-model="setdatatoo.mobile"ng-maxlength="10"  ng-minlength="10" ng-pattern="/[0-9]$/" required />
+                                <p ng-show="form.validateInput('mobile', 'required')" class="text-danger">This field is required.</p>
+                                <p ng-show="form.validateInput('mobile', 'pattern')" class="text-danger">This field must contain only number</p>
+                            </div>
+                        </div>
+                   <!-- email -->
+                         <div class="col-xs-12">
+                            <div class="form-group" ng-class="{ 'has-error' : form.validateInput('email', 'required')}">
+                                <label>E-mail</label>
+                                <input type="text" name="email" class="form-control inputborder" placeholder="Enter Your email" ng-model="setdatatoo.email" ng-pattern='/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/' required />
+                                <p ng-show="form.validateInput('email', 'required')" class="text-danger">This field is required.</p>
+                                <p ng-show="form.validateInput('email', 'pattern')" class="text-danger">This field must be proper E-mail id</p>
+                                
+                            
+                            </div>
+                        </div>
+                        
+                    <!-- password -->
+                        <div class="col-xs-12" ng-show="form.showpwd">
+                            <div class="form-group" ng-class="{ 'has-error' : form.validateInput('password', 'required')}">
+                                <label>Password</label>
+                                <input type="password" name="password" class="form-control inputborder" placeholder="Enter Your password" ng-model="setdatatoo.password"  required />
+                                <p ng-show="form.validateInput('password', 'required')" class="text-danger">This field is required.</p>
+                            </div>
+                        </div>
+                        
+         
+               
+                        
+                  <!-- Confirm password -->
+                            <div class="col-xs-12" ng-show="form.showpwd">
+                            <div class="form-group" ng-class="{ 'has-error' : form.validateInput('confirmpassword', 'required')}">
+                                <label>Confirm Password</label>
+                                <input type="password" name="confirmpassword" class="form-control inputborder" placeholder="Confirm your password" ng-model="setdatatoo.confirmpassword" ui-validate="'$value==setdatatoo.password'" ui-validate-watch="'password'" required />
+                            <p ng-show="form.validateInput('confirmpassword', 'required')" class="text-danger">This field is required.</p>
+                                <span class="text-danger" ng-show="setdatatoo.confirmpassword.$error.validator">Password does Not match</span>
+                            </div>
+                        </div>
+                        
+                        
+                        
+                                                
+                            <!-- pin -->
+                        <div class="col-xs-12" ng-show="form.showpwd">
+                            <div class="form-group" ng-class="{ 'has-error' : form.validateInput('pin', 'required')}">
+                                <label>Pin</label>
+                                <input type="text" name="pin" class="form-control inputborder" placeholder="Enter Your pin" ng-model="setdatatoo.pin" ng-pattern="/[0-9]$/" required />
+                                <p ng-show="form.validateInput('pin', 'required')" class="text-danger">This field is required.</p>
+                                <p ng-show="form.validateInput('pin', 'pattern')" class="text-danger">This field must contain only number</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Status -->     
+                            <div class="col-xs-12">
+                            <div class="form-group"  ng-class="{ 'has-error' : form.validateInput('activestatus', 'required')}">
+                            <label>Status</label>
+                            <select class="form-control inputborder" name="activestatus" ng-model="setdatatoo.activestatus" required >
+                            <option value="">Select Status</option>
+                            <option value="1">Active</option>
+                            <option value="0">InActive</option>
+                            <option value="-1">Deleted</option>
+                            <option value="2">Reset</option>
+                            <option value="3">Email verified</option>
+                            <option value="4">Mobile verified</option>
+                            </select>
+                             <p ng-show="form.validateInput('activestatus', 'required')" class="text-danger">This field is required.</p>
+                            </div>
+                            </div>
+                        <div class="col-xs-6 text-right">
+                            <button class="btn btn-success" type="submit"><strong>Save</strong></button>
+                        </div>
+                        <div class="col-xs-6 text-right">
+                            <button class="btn btn-danger"><strong>Cancel</strong></button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- END panel
+      <button class="btn btn-primary mr" type="button" ng-click="confirm(confirmValue)">Confirm</button>
+      <button class="btn btn-default" type="button" ng-click="closeThisDialog('button')">Cancel</button>-->
+      </div>
+      </div>
+   </script>
+
+
+
+
+<!-- Templates -->
+    <script type="text/ng-template" id="modalDialogIdupdate" >
+        <div class="ngdialog-message">
+                        <div class="panel panel-dark panel-flat" ng-controller="userController as form">
+                        <div class="panel-heading text-center">
+                        <h3>{{form.producttitle}}</h3> </div>   
+                        <div class="panel-body">
+                      <div class="col-lg-12">
+                    <form class="form-validate form-horizontal" name="form.formValidate" ng-submit="form.submitForm()" novalidate=" ">
+                                                
+                     <!-- firstname -->
+                    <div class="col-xs-12">
+                            <div class="form-group" ng-class="{ 'has-error' : form.validateInput('firstname', 'required')}">
+                                <label>First Name</label>
+                                <input type="text" name="firstname" class="form-control inputborder" placeholder="Enter Your firstname" ng-model="setdatatoo.firstname" ng-pattern="/[A-Za-z]$/" required />
+                                <p ng-show="form.validateInput('firstname', 'required')" class="text-danger">This field is required.</p>
+                                <p ng-show="form.validateInput('firstname', 'pattern')" class="text-danger">This field must contain only charector</p>
+                            </div>
+                        </div>
+                        
+                            <!-- lastname -->
+                             <div class="col-xs-12">
+                            <div class="form-group" ng-class="{ 'has-error' : form.validateInput('lastname', 'required')}">
+                                <label>Last Name</label>
+                                <input type="text" name="lastname" class="form-control inputborder" placeholder="Enter Your lastname" ng-model="setdatatoo.lastname" ng-pattern="/[A-Za-z]$/" required />
+                                <p ng-show="form.validateInput('lastname', 'required')" class="text-danger">This field is required.</p>
+                                <p ng-show="form.validateInput('lastname', 'pattern')" class="text-danger">This field must contain only charector</p>
+                            </div>
+                        </div>
+                        
+                        
+                       <!-- mobile -->
+                         <div class="col-xs-12">
+                            <div class="form-group" ng-class="{ 'has-error' : form.validateInput('mobile', 'required')}">
+                                <label>Mobile</label>
+                                <input type="text" name="mobile" class="form-control inputborder" placeholder="Enter Your mobile" ng-model="setdatatoo.mobile"ng-maxlength="10"  ng-minlength="10" ng-pattern="/[0-9]$/" required />
+                                <p ng-show="form.validateInput('mobile', 'required')" class="text-danger">This field is required.</p>
+                                <p ng-show="form.validateInput('mobile', 'pattern')" class="text-danger">This field must contain only number</p>
+                            </div>
+                        </div>
+                   <!-- email -->
+                         <div class="col-xs-12">
+                            <div class="form-group" ng-class="{ 'has-error' : form.validateInput('email', 'required')}">
+                                <label>E-mail</label>
+                                <input type="text" name="email" class="form-control inputborder" placeholder="Enter Your email" ng-model="setdatatoo.email" ng-pattern='/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/' required />
+                                <p ng-show="form.validateInput('email', 'required')" class="text-danger">This field is required.</p>
+                                <p ng-show="form.validateInput('email', 'pattern')" class="text-danger">This field must contain only charector</p>
+                                
+                            
+                            </div>
+                        </div>
+                        
+                        
+                        <!-- Status -->     
+                            <div class="col-xs-12">
+                            <div class="form-group"  ng-class="{ 'has-error' : form.validateInput('activestatus', 'required')}">
+                            <label>Status</label>
+                            <select class="form-control inputborder" name="activestatus" ng-model="setdatatoo.activestatus" required >
+                            <option value="">Select Status</option>
+                            <option value="1">Active</option>
+                            <option value="0">InActive</option>
+                            <option value="-1">Deleted</option>
+                            <option value="2">Reset</option>
+                            <option value="3">Email verified</option>
+                            <option value="4">Mobile verified</option>
+                            </select>
+                             <p ng-show="form.validateInput('activestatus', 'required')" class="text-danger">This field is required.</p>
+                            </div>
+                            </div>
+                        <div class="col-xs-6 text-right">
+                            <button class="btn btn-success" type="submit"><strong>Save</strong></button>
+                        </div>
+                        <div class="col-xs-6 text-right">
+                            <button class="btn btn-danger"><strong>Cancel</strong></button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- END panel
+      <button class="btn btn-primary mr" type="button" ng-click="confirm(confirmValue)">Confirm</button>
+      <button class="btn btn-default" type="button" ng-click="closeThisDialog('button')">Cancel</button>-->
+      </div>
+      </div>
+   </script>

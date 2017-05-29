@@ -1,0 +1,9 @@
+[{
+  "label": "Store Price",
+  "color": "#9289ca",
+  "data": [
+    ["store1", 8],
+    ["store2", 14],
+    ["store3", 11]
+  ]
+}]
