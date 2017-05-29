@@ -1,0 +1,15 @@
+{ 
+    "_id" : "attributemanagement", 
+    "field" : "_id", 
+    "seq" : NumberInt(2)
+}
+{ 
+    "_id" : "clientmanagement", 
+    "field" : "_id", 
+    "seq" : NumberInt(3)
+}
+{ 
+    "_id" : "materialmanagement", 
+    "field" : "_id", 
+    "seq" : NumberInt(1)
+}

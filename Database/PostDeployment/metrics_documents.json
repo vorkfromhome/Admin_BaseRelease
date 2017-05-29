@@ -1,0 +1,12 @@
+{ 
+    "_id" : ObjectId("592659d76a4e520cb49be48d"), 
+    "name" : "gram", 
+    "metricid" : NumberInt(1), 
+    "symbol" : "g", 
+    "baseunit" : "1", 
+    "multiple" : "1000", 
+    "modifiedon" : "24-05-2017 21:13:11", 
+    "modifiedby" : "admin", 
+    "activestatus" : "1", 
+    "status" : "1"
+}

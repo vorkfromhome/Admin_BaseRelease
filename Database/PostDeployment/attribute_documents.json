@@ -1,0 +1,23 @@
+{ 
+    "_id" : ObjectId("5926570a6a4e520cb49be48b"), 
+    "attributegrandparent" : "0", 
+    "attributeparent" : "0", 
+    "attributerole" : "roles", 
+    "attributeroleid" : NumberInt(1), 
+    "modifiedon" : "24-05-2017 21:12:23", 
+    "modifiedby" : "admin", 
+    "activestatus" : "1", 
+    "status" : "1", 
+    "lastModified" : ISODate("2017-05-25T04:12:23.807+0000")
+}
+{ 
+    "_id" : ObjectId("592658c86a4e520cb49be48c"), 
+    "attributegrandparent" : "1", 
+    "attributeparent" : "0", 
+    "attributerole" : "sample", 
+    "attributeroleid" : NumberInt(2), 
+    "modifiedon" : "24-05-2017 21:08:40", 
+    "modifiedby" : "admin", 
+    "activestatus" : "1", 
+    "status" : "1"
+}

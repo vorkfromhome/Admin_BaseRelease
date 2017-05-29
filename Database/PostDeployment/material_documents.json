@@ -1,0 +1,12 @@
+{ 
+    "_id" : ObjectId("592659fc6a4e520cb49be48e"), 
+    "name" : "sampletestsss", 
+    "skv" : "MATR1", 
+    "matericalid" : NumberInt(1), 
+    "category" : "1", 
+    "defaultmetric" : "gram", 
+    "modifiedon" : "24-05-2017 21:13:48", 
+    "modifiedby" : "admin", 
+    "activestatus" : "1", 
+    "status" : "1"
+}
